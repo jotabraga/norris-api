@@ -5,7 +5,7 @@ import { JokesModule } from './jokes/jokes.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule, JokesModule],
+  imports: [ConfigModule.forRoot(), JokesModule],
   controllers: [AppController],
   providers: [AppService],
 })
