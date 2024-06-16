@@ -1,6 +1,7 @@
 import { Controller, Get, HttpStatus, Query, Res } from '@nestjs/common';
 import { JokesService } from './jokes.service';
 import { Response } from 'express';
+import { GetKeywordJokeDto } from './dto/get-keyword-joke.dto';
 
 @Controller('jokes')
 export class JokesController {
@@ -16,10 +17,10 @@ export class JokesController {
 
   @Get('search-joke')
   async getSpecificJoke(
-    @Query() keyWord: string,
+    @Query() getKeywordJokeDto: GetKeywordJokeDto,
     @Res() response: Response,
   ): Promise<Response<any, Record<string, any>>> {
-    const joke = await this.jokesService.getRandomJoke();
+    const joke = await this.jokesService.getKeywordJoke(getKeywordJokeDto);
     return response.status(HttpStatus.OK).send(joke);
   }
 }
