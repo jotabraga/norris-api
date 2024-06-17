@@ -1,10 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import axios, { AxiosInstance } from 'axios';
-// import axios from 'axios';
 
 @Injectable()
 export class ChuckNorrisService {
+  private readonly chuckNorrisApi: AxiosInstance;
+
+  constructor() {
+    this.chuckNorrisApi = axios.create({ baseURL: process.env.NORRIS_API_URL });
+  }
+
   getChuckNorrisApi(): AxiosInstance {
-    return axios.create({ baseURL: process.env.NORRIS_API_URL });
+    return this.chuckNorrisApi;
   }
 }

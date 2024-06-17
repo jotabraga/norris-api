@@ -17,10 +17,10 @@ export class JokesController {
 
   @Get('search-joke')
   async getSpecificJoke(
-    @Query() getKeywordJokeDto: GetKeywordJokeDto,
+    @Query() getKeywordJoke: GetKeywordJokeDto,
     @Res() response: Response,
   ): Promise<Response<any, Record<string, any>>> {
-    const joke = await this.jokesService.getKeywordJoke(getKeywordJokeDto);
+    const joke = await this.jokesService.getKeywordJoke(getKeywordJoke);
     return response.status(HttpStatus.OK).send(joke);
   }
 }
