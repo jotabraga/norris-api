@@ -26,8 +26,8 @@ export class JokesService {
       timestamp: new Date().toISOString(),
     };
 
-    await this.logsService.registerJokeLog(jokeData);
-    return randomJoke;
+    const register = await this.logsService.registerJokeLog(jokeData);
+    return register.Joke;
   }
 
   async getKeywordJoke(getKeyword: GetKeywordJokeDto): Promise<string> {

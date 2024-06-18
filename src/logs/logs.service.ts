@@ -33,7 +33,9 @@ export class LogsService {
     });
   }
 
-  async registerJokeLog(registerJokeLog: RegisterJokeLogDto): Promise<void> {
+  async registerJokeLog(
+    registerJokeLog: RegisterJokeLogDto,
+  ): Promise<LogEntry> {
     const { queryType, result, searchTerm, timestamp } = registerJokeLog;
     const record = {
       Joke: result,
@@ -42,6 +44,7 @@ export class LogsService {
       'Search term': searchTerm || '',
     };
     await this.csvWriter.writeRecords([record]);
+    return record;
   }
 
   async readLogs(startDate?: string, endDate?: string): Promise<LogEntry[]> {
