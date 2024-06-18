@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JokesController } from './jokes.controller';
 import { JokesService } from './jokes.service';
-import { GetKeywordJokeDto } from './dto/get-keyword-joke.dto';
 import { Response } from 'express';
 
 describe('JokesController', () => {
