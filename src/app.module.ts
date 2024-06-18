@@ -5,6 +5,7 @@ import { JokesModule } from './jokes/jokes.module';
 import { ConfigModule } from '@nestjs/config';
 import { ChuckNorrisModule } from '@/chuck-norris/chuck-norris.module';
 import { CommonModule } from './common/common.module';
+import { LogsModule } from './logs/logs.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -17,6 +18,7 @@ import * as Joi from '@hapi/joi';
     JokesModule,
     ChuckNorrisModule,
     CommonModule,
+    LogsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
