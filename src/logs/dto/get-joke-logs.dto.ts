@@ -1,6 +1,10 @@
 import { IsString, IsOptional } from 'class-validator';
-export class GetKeywordJokeDto {
+export class GetJokeLogsDto {
   @IsString()
   @IsOptional()
-  readonly date: string;
+  readonly startDate: string;
+
+  @IsString()
+  @IsOptional()
+  readonly endDate: string;
 }
