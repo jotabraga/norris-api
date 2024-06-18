@@ -11,7 +11,9 @@ import { Response } from 'express';
 import { LogEntry, LogsService } from './logs.service';
 import { GetJokeLogsDto } from './dto/get-joke-logs.dto';
 import { RegisterJokeLogDto } from './dto/register-joke-log.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('logs')
 @Controller('logs')
 export class LogsController {
   constructor(private readonly logsService: LogsService) {}
@@ -26,12 +28,12 @@ export class LogsController {
     return response.status(HttpStatus.OK).send(jokes);
   }
 
-  @Post('log')
+  @Post('joke')
   async registerJokeLog(
     @Body() registerJokeLog: RegisterJokeLogDto,
     @Res() response: Response,
-  ): Promise<Response<any, Record<string, any>>> {
-    await this.logsService.registerJokeLog(registerJokeLog);
-    return response.status(HttpStatus.CREATED);
+  ): Promise<Response<RegisterJokeLogDto, Record<string, any>>> {
+    const register = await this.logsService.registerJokeLog(registerJokeLog);
+    return response.status(HttpStatus.CREATED).send(register);
   }
 }

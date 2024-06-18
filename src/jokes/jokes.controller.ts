@@ -2,7 +2,9 @@ import { Controller, Get, HttpStatus, Query, Res } from '@nestjs/common';
 import { JokesService } from './jokes.service';
 import { Response } from 'express';
 import { GetKeywordJokeDto } from './dto/get-keyword-joke.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('jokes')
 @Controller('jokes')
 export class JokesController {
   constructor(private readonly jokesService: JokesService) {}
