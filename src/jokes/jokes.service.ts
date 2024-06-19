@@ -46,6 +46,15 @@ export class JokesService {
     if (!keywordJoke)
       throw new NotFoundException('There is no joke related to this keyword');
 
+    const jokeData: RegisterJokeLogDto = {
+      queryType: 'keyword',
+      result: keywordJoke,
+      searchTerm: keyword || '',
+      timestamp: new Date().toISOString(),
+    };
+
+    await this.logsService.registerJokeLog(jokeData);
+
     return keywordJoke;
   }
 }

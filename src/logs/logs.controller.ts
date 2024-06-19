@@ -27,8 +27,8 @@ export class LogsController {
     isArray: true,
   })
   async getJokesLogs(
-    @Query() getJokeLogs: GetJokeLogsDto,
     @Res() response: Response,
+    @Query() getJokeLogs?: GetJokeLogsDto,
   ): Promise<Response<CsvJokeLogsDto[], Record<string, any>>> {
     const { endDate, startDate } = getJokeLogs;
     const jokes = await this.logsService.readLogs(startDate, endDate);
