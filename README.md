@@ -1,8 +1,13 @@
 # Norris Api
+
 Chuck norris jokes api
+
 ## About 🔎
+
 API for get Chuck Norris jokes and register/read csv file
+
 ### Implemented features :heavy_check_mark:
+
 - [x] Get random joke
 - [x] Search for specif joke
 - [x] Register joke log in csv file
@@ -12,7 +17,9 @@ API for get Chuck Norris jokes and register/read csv file
 - [x] DTO validators
 - [x] Validation pipe / whitelist
 - [x] Config module
+
 ### Future improvements 🔮
+
 - [ ] E2e tests
 - [ ] Redis cache resource
 
@@ -42,9 +49,9 @@ API for get Chuck Norris jokes and register/read csv file
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## First step
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Check the API URL: https://api.chucknorris.io/ as it has been experiencing instabilities since 16/06/2024."
 
 ## Installation
 
@@ -53,6 +60,11 @@ $ yarn install
 ```
 
 ## Running the app
+
+````bash
+# configuration - add .env content
+$ echo "NORRIS_API_URL=https://api.chucknorris.io/" > .env
+
 
 ```bash
 # development
@@ -63,7 +75,7 @@ $ yarn run start:dev
 
 # production mode
 $ yarn run start:prod
-```
+````
 
 ## Test
 
@@ -78,4 +90,9 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Documentation
 
+```bash
+# visit swagger api doc url
+http://localhost:3000/api
+```
