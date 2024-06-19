@@ -4,6 +4,7 @@ import { IsString, IsOptional } from 'class-validator';
 export class RegisterJokeLogDto {
   @ApiProperty({
     description: 'The query type of search: random or by keyword',
+    example: 'random',
   })
   @IsString()
   readonly queryType: string;

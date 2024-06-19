@@ -1,15 +1,31 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JokesService } from './jokes.service';
 import { ChuckNorrisService } from '@/chuck-norris/chuck-norris.service';
+import { LogsService } from '@/logs/logs.service';
 import { NotFoundException } from '@nestjs/common';
 
 describe('JokesService', () => {
   let jokesService: JokesService;
   let chuckNorrisService: ChuckNorrisService;
+  const chuckNorrisMock = {
+    getChuckNorrisApi: jest.fn().mockReturnValue({
+      get: (): { data: string } => ({ data: 'mocked data' }),
+    }),
+  };
+
+  // mock duplicado
+  const logsServiceMock = {
+    registerJokeLog: jest.fn(),
+    readLogs: jest.fn(),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [JokesService, ChuckNorrisService],
+      providers: [
+        { provide: LogsService, useValue: logsServiceMock },
+        { provide: ChuckNorrisService, useValue: chuckNorrisMock },
+        JokesService,
+      ],
     }).compile();
 
     jokesService = module.get<JokesService>(JokesService);
