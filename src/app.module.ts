@@ -34,5 +34,6 @@ import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
       useValue: path.resolve(process.cwd(), 'api-logs.csv'),
     },
   ],
+  exports: ['LOG_FILE_PATH'],
 })
 export class AppModule {}
