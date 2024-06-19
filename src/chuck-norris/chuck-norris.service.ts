@@ -7,8 +7,7 @@ export class ChuckNorrisService {
   private readonly chuckNorrisApi: AxiosInstance;
 
   constructor(private readonly configService: ConfigService) {
-    const norrisApiUrl = this.configService.get<string>('NORRIS_API_URL');
-    this.chuckNorrisApi = axios.create({ baseURL: norrisApiUrl });
+    this.chuckNorrisApi = axios.create({ baseURL: process.env.NORRIS_API_URL });
   }
 
   getChuckNorrisApi(): AxiosInstance {
