@@ -1,3 +1,23 @@
+# Norris Api
+Chuck norris jokes api
+## About 🔎
+API for get Chuck Norris jokes and register/read csv file
+### Implemented features :heavy_check_mark:
+- [x] Get random joke
+- [x] Search for specif joke
+- [x] Register joke log in csv file
+- [x] Read logs in csv file
+- [x] Unit tests
+- [x] Swagger documentation
+- [x] DTO validators
+- [x] Validation pipe / whitelist
+- [x] Config module
+### Future improvements 🔮
+- [ ] E2e tests
+- [ ] Redis cache resource
+
+## Tech tools :wrench:
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -58,16 +78,4 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
