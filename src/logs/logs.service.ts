@@ -17,6 +17,9 @@ export class LogsService {
       'api-logs.csv',
     ),
   ) {
+    const fileExists = fs.existsSync(this.logFilePath);
+    const isFileEmpty = fileExists && fs.statSync(this.logFilePath).size === 0;
+
     this.csvWriter = createObjectCsvWriter({
       path: this.logFilePath,
       header: [
@@ -25,10 +28,12 @@ export class LogsService {
         { id: 'Timestamp', title: 'Timestamp' },
         { id: 'Search term', title: 'Search term' },
       ],
-      append:
-        fs.existsSync(this.logFilePath) &&
-        fs.statSync(this.logFilePath).size > 0,
+      append: fileExists,
     });
+
+    if (fileExists && isFileEmpty) {
+      this.csvWriter.writeRecords([]);
+    }
   }
 
   async registerJokeLog(registerJokeLog: RegisterJokeLogDto): Promise<string> {
