@@ -10,6 +10,7 @@ import * as Joi from '@hapi/joi';
 import { LogsService } from './logs/logs.service';
 import * as path from 'path';
 import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -18,6 +19,16 @@ import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
       validationSchema: Joi.object({
         NORRIS_API_URL: Joi.required(),
       }),
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5433,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'postgres',
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     JokesModule,
     ChuckNorrisModule,
