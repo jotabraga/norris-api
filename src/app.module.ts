@@ -12,6 +12,8 @@ import * as path from 'path';
 import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+const prodEnvironment = process.env.NODE_ENV === 'production';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -28,7 +30,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'postgres',
       database: 'postgres',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: prodEnvironment ? false : true,
     }),
     JokesModule,
     ChuckNorrisModule,
