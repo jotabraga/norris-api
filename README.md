@@ -21,7 +21,8 @@ API for get Chuck Norris jokes and register/read csv file
 ### Future improvements 🔮
 
 - [ ] E2e tests
-- [ ] Redis cache resource
+- [ ] Typeorm / db implementation
+- [ ] Queue system
 
 ## Tech tools :wrench:
 
