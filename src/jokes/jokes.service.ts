@@ -3,12 +3,17 @@ import { ChuckNorrisService } from '@/chuck-norris/chuck-norris.service';
 import { GetKeywordJokeDto } from './dto/get-keyword-joke.dto';
 import { LogsService } from '@/logs/logs.service';
 import { RegisterJokeLogDto } from '@/logs/dto/register-joke-log.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Joke } from './entities/joke.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class JokesService {
   constructor(
     private readonly chuckNorrisService: ChuckNorrisService,
     private readonly logsService: LogsService,
+    @InjectRepository(Joke)
+    private readonly jokeRepository: Repository<Joke>,
   ) {}
 
   async getRandomJoke(): Promise<string> {
@@ -25,6 +30,9 @@ export class JokesService {
       searchTerm: '',
       timestamp: new Date().toISOString(),
     };
+
+    const joke = this.jokeRepository.create(jokeData);
+    this.jokeRepository.save(joke);
 
     await this.logsService.registerJokeLog(jokeData);
     return randomJoke;
