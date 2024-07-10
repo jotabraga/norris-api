@@ -22,6 +22,9 @@ describe('[Feature] Jokes - /jokes', () => {
       .expect('Hello World!');
   });
 
+  it.todo('Get random [GET /]');
+  it.todo('Get one [GET /?keyword]');
+
   afterAll(async () => {
     await app.close();
   });
