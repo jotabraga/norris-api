@@ -10,6 +10,7 @@ import * as Joi from '@hapi/joi';
 import { LogsService } from './logs/logs.service';
 import * as path from 'path';
 import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
     ChuckNorrisModule,
     CommonModule,
     LogsModule,
+    MongooseModule.forRoot('mongodb://localhost:27017/nest-course'),
   ],
   controllers: [AppController],
   providers: [
