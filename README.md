@@ -62,25 +62,25 @@ $ yarn install
 
 ## Running the app
 
-# configuration - add .env content
+### configuration - add .env content
 
 ```bash
 $ echo "NORRIS_API_URL=https://api.chucknorris.io/" > .env
 ```
 
-# development
+### development
 
 ```bash
 $ yarn run start
 ```
 
-# watch mode
+### watch mode
 
 ```bash
 $ yarn run start:dev
 ```
 
-# production mode
+### production mode
 
 ```bash
 $ yarn run start:prod
@@ -88,19 +88,19 @@ $ yarn run start:prod
 
 ## Test
 
-# unit tests
+### unit tests
 
 ```bash
 $ yarn run test
 ```
 
-# e2e tests
+### e2e tests
 
 ```bash
 $ yarn run test:e2e
 ```
 
-# test coverage
+### test coverage
 
 ```bash
 $ yarn run test:cov
