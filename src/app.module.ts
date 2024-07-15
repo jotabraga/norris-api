@@ -10,6 +10,10 @@ import * as Joi from '@hapi/joi';
 import { LogsService } from './logs/logs.service';
 import * as path from 'path';
 import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
+
+const prodEnvironment = process.env.NODE_ENV === 'production';
 
 @Module({
   imports: [
@@ -19,10 +23,21 @@ import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
         NORRIS_API_URL: Joi.required(),
       }),
     }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5433,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'postgres',
+      entities: [__dirname + '/../**/*.entity.{js,ts}'],
+      synchronize: prodEnvironment ? false : true,
+    }),
     JokesModule,
     ChuckNorrisModule,
     CommonModule,
     LogsModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
