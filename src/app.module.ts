@@ -11,6 +11,7 @@ import { LogsService } from './logs/logs.service';
 import * as path from 'path';
 import { ChuckNorrisService } from './chuck-norris/chuck-norris.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 const prodEnvironment = process.env.NODE_ENV === 'production';
 
@@ -36,6 +37,7 @@ const prodEnvironment = process.env.NODE_ENV === 'production';
     ChuckNorrisModule,
     CommonModule,
     LogsModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [

@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { JokesModule } from '@/jokes/jokes.module';
+import { UserModule } from '../../src/user/user.module';
 
-describe('[Feature] Jokes - /jokes', () => {
+describe('[Feature] User - /user', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [JokesModule],
+      imports: [UserModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -17,9 +17,9 @@ describe('[Feature] Jokes - /jokes', () => {
 
   it('/ (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/user')
       .expect(200)
-      .expect('Hello World!');
+      .expect('hello world');
   });
 
   afterAll(async () => {
